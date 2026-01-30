@@ -35,7 +35,7 @@ export const useCreateBooking = () => {
   const { user } = useAuth();
 
   return useMutation({
-    mutationFn: async (booking: Omit<BookingInsert, 'user_id'>) => {
+    mutationFn: async (booking: Omit<BookingInsert, 'user_id'> & { theater_id?: string; showtime_id?: string }) => {
       if (!user) throw new Error('Must be logged in to book');
 
       const { data, error } = await supabase
