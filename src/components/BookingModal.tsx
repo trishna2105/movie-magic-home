@@ -1,19 +1,19 @@
 import { useState, useMemo } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/contexts/AuthContext';
 import { useCreateBooking, useUpdateBookingPayment } from '@/hooks/useBookings';
 import { Movie } from '@/hooks/useMovies';
 import { useTheaterShowtimes, Showtime, Theater } from '@/hooks/useTheaters';
 import { toast } from '@/hooks/use-toast';
-import { Loader2, Calendar, Clock, Users, CreditCard, CheckCircle, MapPin, ChevronLeft, Armchair } from 'lucide-react';
+import { Loader2, Calendar, Clock, Users, CheckCircle, MapPin, ChevronLeft, Armchair } from 'lucide-react';
 import { format, addDays } from 'date-fns';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import SeatSelection from './SeatSelection';
+import PaymentStep from './PaymentStep';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -423,55 +423,17 @@ const BookingModal = ({ isOpen, onClose, movie, onRequireAuth }: BookingModalPro
           </div>
         )}
 
-        {step === 'payment' && (
-          <div className="space-y-4 mt-4">
-            <div className="p-4 bg-muted rounded-lg space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Theater:</span>
-                <span className="text-foreground">{selectedShowtime?.theater.name}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Date:</span>
-                <span className="text-foreground">{format(new Date(selectedDate), 'EEE, MMM d, yyyy')}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Time:</span>
-                <span className="text-foreground">{selectedShowtime?.showtime.show_time}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Seats:</span>
-                <span className="text-foreground">{selectedSeatIds.sort().join(', ')}</span>
-              </div>
-              <div className="flex justify-between font-bold pt-2 border-t border-border">
-                <span className="text-foreground">Total:</span>
-                <span className="text-primary">₹{totalAmount}</span>
-              </div>
-            </div>
-
-            <div className="p-4 border border-dashed border-border rounded-lg text-center">
-              <CreditCard className="w-12 h-12 mx-auto text-muted-foreground mb-2" />
-              <p className="text-sm text-muted-foreground">Mock Payment Gateway</p>
-              <p className="text-xs text-muted-foreground">Click below to simulate payment</p>
-            </div>
-
-            <Button
-              onClick={handlePayment}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-              disabled={processing}
-            >
-              {processing ? (
-                <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Processing Payment...
-                </>
-              ) : (
-                <>
-                  <CreditCard className="w-4 h-4 mr-2" />
-                  Pay ₹{totalAmount}
-                </>
-              )}
-            </Button>
-          </div>
+        {step === 'payment' && selectedShowtime && (
+          <PaymentStep
+            movieTitle={movie.title}
+            theaterName={selectedShowtime.theater.name}
+            selectedDate={selectedDate}
+            showTime={selectedShowtime.showtime.show_time}
+            selectedSeats={selectedSeatIds}
+            totalAmount={totalAmount}
+            processing={processing}
+            onPayment={handlePayment}
+          />
         )}
 
         {step === 'success' && (
