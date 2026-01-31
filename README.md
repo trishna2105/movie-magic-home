@@ -1,73 +1,58 @@
-# Welcome to your Lovable project
+Got it 👍
+You want this README to sound like **you built the project**, not like a Lovable template, and keep it **simple, non-deep**, just a clean project overview for a **movie app using Movable + Supabase**.
 
-## Project info
+Here’s a **clean, personal-style README** you can directly replace the current one with 👇
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+---
 
-## How can I edit this code?
+# 🎬 Movie App
 
-There are several ways of editing your application.
+## About the Project
 
-**Use Lovable**
+This is a **movie browsing application** built to explore and display movies in a clean and interactive way.
+The app fetches movie-related data and manages backend functionality using **Supabase**, while the UI and logic are handled through a modern frontend setup.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+The goal of this project was to practice building a real-world app with proper frontend–backend connection and a smooth user experience.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Features
 
-**Use your preferred IDE**
+* Browse and explore movies
+* Clean and responsive UI
+* Backend integration using Supabase
+* Fast and modern frontend setup
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* shadcn/ui
+* Supabase
 
-Follow these steps:
+## Getting Started
+
+To run this project locally:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to the project folder
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The project can be deployed directly through **Lovable**, making it easy to publish and share.
 
-**Use GitHub Codespaces**
+## Notes
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+This project was created as part of my learning and hands-on practice with modern web development tools, focusing on frontend design and backend connectivity.
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
