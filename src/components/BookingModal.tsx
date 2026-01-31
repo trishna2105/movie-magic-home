@@ -238,31 +238,36 @@ const BookingModal = ({ isOpen, onClose, movie, onRequireAuth }: BookingModalPro
               </div>
             </div>
 
-            {/* Date Selection */}
-            <div className="space-y-2 flex-shrink-0">
-              <Label className="text-foreground flex items-center gap-2">
-                <Calendar className="w-4 h-4" /> Select Date
+            {/* Date Selection - Horizontal Scrollable Row */}
+            <div className="space-y-3 flex-shrink-0">
+              <Label className="text-foreground flex items-center gap-2 text-base font-semibold">
+                <Calendar className="w-5 h-5 text-primary" /> Select Date
               </Label>
-              <div className="flex gap-2 overflow-x-auto pb-2">
-                {availableDates.map((date) => (
-                  <Button
-                    key={date.value}
-                    variant={selectedDate === date.value ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setSelectedDate(date.value)}
-                    className={`flex flex-col h-16 min-w-[60px] px-3 ${
-                      selectedDate === date.value 
-                        ? 'bg-primary text-primary-foreground' 
-                        : 'border-border text-foreground hover:bg-muted'
-                    }`}
-                  >
-                    <span className="text-xs">{date.dayLabel}</span>
-                    <span className="text-lg font-bold">{date.dateLabel}</span>
-                    <span className="text-xs">{date.monthLabel}</span>
-                  </Button>
-                ))}
-              </div>
+              <ScrollArea className="w-full">
+                <div className="flex gap-3 pb-3">
+                  {availableDates.map((date, index) => (
+                    <Button
+                      key={date.value}
+                      variant={selectedDate === date.value ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setSelectedDate(date.value)}
+                      className={`flex flex-col h-20 min-w-[70px] px-4 rounded-xl transition-all duration-200 ${
+                        selectedDate === date.value 
+                          ? 'bg-primary text-primary-foreground shadow-lg scale-105 border-2 border-primary' 
+                          : 'border-2 border-border text-foreground hover:bg-muted hover:border-primary/50'
+                      } ${index === 0 ? 'ml-0' : ''}`}
+                    >
+                      <span className="text-xs font-medium uppercase tracking-wide opacity-80">{date.dayLabel}</span>
+                      <span className="text-xl font-bold">{date.dateLabel}</span>
+                      <span className="text-xs font-medium opacity-80">{date.monthLabel}</span>
+                    </Button>
+                  ))}
+                </div>
+              </ScrollArea>
             </div>
+
+            {/* Divider */}
+            <div className="border-t border-border my-2" />
 
             {/* Theaters & Showtimes */}
             <div className="space-y-2 flex-1 overflow-hidden flex flex-col">
