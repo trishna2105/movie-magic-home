@@ -1,10 +1,3 @@
-Got it 👍
-You want this README to sound like **you built the project**, not like a Lovable template, and keep it **simple, non-deep**, just a clean project overview for a **movie app using Movable + Supabase**.
-
-Here’s a **clean, personal-style README** you can directly replace the current one with 👇
-
----
-
 # 🎬 Movie App
 
 ## About the Project
